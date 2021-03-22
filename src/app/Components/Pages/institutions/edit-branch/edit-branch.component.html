@@ -34,13 +34,17 @@
     <div [hidden]="isShow">
       <button
         class="create-button"
+        (click)="clickSave()"
         type="submit"
         id="create-inst"
         kendoButton
         [look]="'outline'"
+        [disabled]="branchFormEdit.invalid"
       >
-        <span class="k-icon k-i-save"></span> შექმნა
+        <span class="k-icon k-i-save"></span> შენახვა
       </button>
     </div>
   </form>
+
+  <div [hidden]="textShow">შენახულია !</div>
 </section>

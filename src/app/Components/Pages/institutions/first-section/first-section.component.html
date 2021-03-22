@@ -75,14 +75,15 @@
     <kendo-grid-column title="საკონტაქტო ნომერი" field="number" [width]="160">
     </kendo-grid-column>
 
-    <kendo-grid-column title="მოქმედებები" field="" [width]="60">
-      <ng-template kendoGridCellTemplate>
-        <kendo-dropdownlist
-          class="edit-box"
-          [data]="showEdit"
-          value="ნახვა"
+    <kendo-grid-column title="მოქმედებები" field="Actions" [width]="60">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        <kendo-dropdownbutton
+          [data]="showOptions"
+          (itemClick)="onItemClick($event, dataItem)"
         >
-        </kendo-dropdownlist>
+          <span class="k-icon k-i-eye"></span>
+          ნახვა
+        </kendo-dropdownbutton>
       </ng-template>
     </kendo-grid-column>
   </kendo-grid>

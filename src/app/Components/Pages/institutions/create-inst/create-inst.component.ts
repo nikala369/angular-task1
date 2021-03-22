@@ -114,6 +114,7 @@ export class CreateInstComponent implements OnInit {
       ]);
     } else if (item === 'რედაქტირება') {
       console.log(item, dataItem);
+      this.dataService.branchSubject.next(dataItem);
       this.router.navigate([
         '/institutions',
         this.createinstitutions.id,

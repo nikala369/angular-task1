@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { DataService } from './../../../../Services/data.service';
 import { EventService } from '../../../../Services/event.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,11 +13,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class FirstSectionComponent implements OnInit {
   public myForm: FormGroup;
 
-  institutions: any[] = [];
+  institutions: any;
   public gridData: any[] = [];
-  public showEdit: Array<string> = ['რედაქტირება', 'ნახვა'];
+  public showOptions: Array<string> = ['რედაქტირება', 'ნახვა'];
 
-  constructor(public eventsService: EventService) {
+  constructor(
+    public eventsService: EventService,
+    public dataService: DataService,
+    public router: Router
+  ) {
     this.myForm = new FormGroup({
       name: new FormControl('', Validators.required),
       identification: new FormControl('', Validators.required),
@@ -26,6 +32,7 @@ export class FirstSectionComponent implements OnInit {
     this.eventsService.getInstitutionsAll().subscribe((data) => {
       this.gridData = data.data;
       this.institutions = data.data;
+      console.log(data.data);
     });
   }
 
@@ -47,6 +54,14 @@ export class FirstSectionComponent implements OnInit {
           }
         }
       );
+    }
+  }
+
+  onItemClick(item: any, dataItem: any) {
+    if (item === 'რედაქტირება') {
+      console.log(item, dataItem);
+      this.dataService.branchSubject.next(dataItem);
+      this.router.navigate(['/institutions', dataItem.id, 'edit']);
     }
   }
 }

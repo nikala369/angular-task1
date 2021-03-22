@@ -1,0 +1,59 @@
+<section class="create-institution">
+  <header>
+    <h1 class="create-heading">დაწესებულების რედაქტირება</h1>
+  </header>
+
+  <form [formGroup]="myFormTemplate">
+    <label
+      >საიდენტიფიკაციო
+      <input
+        class="inst-input-type"
+        formControlName="identification"
+        type="text"
+        name="identificationCreate"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+        kendoTextBox
+      />
+    </label>
+
+    <label
+      >დასახელება*
+      <kendo-textbox
+        class="inst-input-type"
+        name="institutionName"
+        formControlName="name"
+        [showSuccessIcon]="value.length >= 3"
+        [showErrorIcon]="'initial'"
+        required
+      >
+      </kendo-textbox>
+    </label>
+    <label
+      >საკონტაქტო ნომერი*
+      <kendo-maskedtextbox
+        class="number-field"
+        name="mobile"
+        [mask]="mask"
+        formControlName="number"
+        [value]="valueNumber"
+        number="00000000"
+      ></kendo-maskedtextbox>
+    </label>
+
+    <div [hidden]="isShow">
+      <button
+        class="create-button"
+        (click)="toggleDisplay()"
+        [disabled]="myFormTemplate.invalid"
+        type="submit"
+        id="create-inst"
+        kendoButton
+        [look]="'outline'"
+      >
+        <span class="k-icon k-i-save"></span> შენახვა
+      </button>
+    </div>
+  </form>
+
+  <div [hidden]="textShow">შენახულია !</div>
+</section>
