@@ -20,6 +20,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { CreateBranchComponent } from './Components/Pages/institutions/create-branch/create-branch.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { CreatePersonalComponent } from './Components/Pages/institutions/create-personal/create-personal.component';
+import { InstEditComponent } from './Components/Pages/institutions/inst-edit/inst-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CreatePersonalComponent } from './Components/Pages/institutions/create-
     CreateInstComponent,
     CreateBranchComponent,
     CreatePersonalComponent,
+    InstEditComponent,
   ],
   imports: [
     BrowserModule,

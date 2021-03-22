@@ -38,18 +38,15 @@ export class EventService {
   }
 
   getPersonal(): Observable<PersonalServ[]> {
-    return (
-      this.https
-        //                                             data.id
-        .get<PersonalServ[]>(`${baseUrl}/institutions/2/branches/2/personal`)
-        .pipe(
-          map((data: PersonalServ[]) => {
-            return data;
-          }),
-          catchError((error) => {
-            return throwError('Something went wrong!');
-          })
-        )
-    );
+    return this.https
+      .get<PersonalServ[]>(`${baseUrl}/institutions/2/branches/2/personal`)
+      .pipe(
+        map((data: PersonalServ[]) => {
+          return data;
+        }),
+        catchError((error) => {
+          return throwError('Something went wrong!');
+        })
+      );
   }
 }

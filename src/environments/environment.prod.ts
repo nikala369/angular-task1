@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
 };
+
+export const baseUrl = `https://emisdev.ga/api`;

@@ -1,3 +1,4 @@
+import { InstEditComponent } from './Components/Pages/institutions/inst-edit/inst-edit.component';
 import { EditBranchComponent } from './Components/Pages/institutions/edit-branch/edit-branch.component';
 import { BranchesComponent } from './Components/Pages/institutions/branches/branches.component';
 import { CreateBranchComponent } from './Components/Pages/institutions/create-branch/create-branch.component';
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'institutions/:id',
     component: CreateInstComponent,
+  },
+
+  {
+    path: 'institutions/:id/edit',
+    component: InstEditComponent,
   },
 
   {
@@ -68,5 +74,6 @@ export const routingComponents = [
   EditBranchComponent,
   BranchesComponent,
   LoginComponent,
+  InstEditComponent,
   PageNotFoundComponent,
 ];
