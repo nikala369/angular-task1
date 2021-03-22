@@ -1,0 +1,74 @@
+<section class="create-branches">
+  <header>
+    <h1 class="create-heading">
+      <span> დაწესებულება: {{ institutionName }} - </span> ფილიალის ნახვა
+    </h1>
+  </header>
+
+  <form [formGroup]="branchForm" novalidate>
+    <label
+      >მისამართი*
+      <kendo-textbox
+        class="inst-input-type"
+        formControlName="address"
+        type="text"
+        name="address"
+        [showSuccessIcon]="branchForm.value.name.length >= 3"
+        [showErrorIcon]="'initial'"
+        [disabled]="isDisabled"
+      >
+      </kendo-textbox>
+    </label>
+
+    <label
+      >მენეჯერის სახელი*
+      <kendo-textbox
+        class="inst-input-type"
+        name="menegerName"
+        formControlName="name"
+        [showSuccessIcon]="branchForm.value.name.length >= 3"
+        [showErrorIcon]="'initial'"
+        [disabled]="isDisabled"
+      >
+      </kendo-textbox>
+    </label>
+  </form>
+
+  <section class="section2">
+    <div class="div-line"></div>
+    <h2>პერსონალი</h2>
+
+    <button
+      class="create-button button-space"
+      type="submit"
+      (click)="createPersonal()"
+      id="create-personal"
+      kendoButton
+      [look]="'outline'"
+    >
+      <span class="k-icon k-i-plus"></span>პერსონალის შექმნა
+    </button>
+
+    <kendo-grid
+      class="grid-kendo"
+      [kendoGridBinding]="gridPersonal"
+      [pageable]="true"
+      [pageSize]="2"
+      [height]="175"
+      scrollable="none"
+    >
+      <kendo-grid-column title="პირადი ნომერი" field="pid" [width]="80">
+      </kendo-grid-column>
+
+      <kendo-grid-column title="სახელი" field="name" [width]="100">
+      </kendo-grid-column>
+
+      <kendo-grid-column title="მოქმედებები" field="" [width]="70">
+        <ng-template kendoGridCellTemplate>
+          <kendo-dropdownlist class="edit-box" [data]="showEdit" value="ნახვა">
+          </kendo-dropdownlist>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </section>
+</section>

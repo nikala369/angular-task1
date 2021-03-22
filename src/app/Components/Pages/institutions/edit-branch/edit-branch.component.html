@@ -1,0 +1,46 @@
+<section class="create-branches">
+  <header>
+    <h1 class="create-heading">
+      <span> დაწესებულება: {{ institutionName }} - </span> ფილიალის რედაქტირება
+    </h1>
+  </header>
+
+  <form [formGroup]="branchFormEdit" novalidate>
+    <label
+      >მისამართი*
+      <kendo-textbox
+        class="inst-input-type"
+        formControlName="address"
+        type="text"
+        name="address"
+        [showSuccessIcon]="branchFormEdit.value.name.length >= 3"
+        [showErrorIcon]="'initial'"
+      >
+      </kendo-textbox>
+    </label>
+
+    <label
+      >მენეჯერის სახელი*
+      <kendo-textbox
+        class="inst-input-type"
+        name="menegerName"
+        formControlName="name"
+        [showSuccessIcon]="branchFormEdit.value.name.length >= 3"
+        [showErrorIcon]="'initial'"
+      >
+      </kendo-textbox>
+    </label>
+
+    <div [hidden]="isShow">
+      <button
+        class="create-button"
+        type="submit"
+        id="create-inst"
+        kendoButton
+        [look]="'outline'"
+      >
+        <span class="k-icon k-i-save"></span> შექმნა
+      </button>
+    </div>
+  </form>
+</section>

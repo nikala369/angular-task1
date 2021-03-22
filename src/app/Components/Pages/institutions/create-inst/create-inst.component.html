@@ -1,0 +1,106 @@
+<section class="create-institution">
+  <header>
+    <h1 class="create-heading">
+      <span [hidden]="isShow"> დაწესებულების შექმნა </span>
+      <span [hidden]="gridShow"
+        >დაწესებულება: {{ myFormTemplate.value.name | json }}
+      </span>
+    </h1>
+  </header>
+
+  <form [formGroup]="myFormTemplate" (ngSubmit)="onSubmit()" novalidate>
+    <label
+      >საიდენტიფიკაციო
+      <input
+        class="inst-input-type"
+        formControlName="identification"
+        type="text"
+        name="identificationCreate"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+        kendoTextBox
+      />
+    </label>
+
+    <label
+      >დასახელება*
+      <kendo-textbox
+        class="inst-input-type"
+        name="institutionName"
+        formControlName="name"
+        [showSuccessIcon]="value.length >= 3"
+        [showErrorIcon]="'initial'"
+        required
+      >
+      </kendo-textbox>
+    </label>
+    <label
+      >საკონტაქტო ნომერი*
+      <kendo-maskedtextbox
+        class="number-field"
+        name="mobile"
+        [mask]="mask"
+        formControlName="number"
+        [value]="valueNumber"
+        number="00000000"
+        required
+      ></kendo-maskedtextbox>
+    </label>
+
+    <div [hidden]="isShow">
+      <button
+        class="create-button"
+        (click)="toggleDisplay()"
+        [disabled]="myFormTemplate.invalid"
+        type="submit"
+        id="create-inst"
+        kendoButton
+        [look]="'outline'"
+      >
+        <span class="k-icon k-i-plus"></span> შექმნა
+      </button>
+    </div>
+  </form>
+</section>
+
+<section class="section2" [hidden]="gridShow">
+  <div class="div-line"></div>
+  <h2>ფილიალები</h2>
+
+  <button
+    class="create-button button-space"
+    type="submit"
+    (click)="createBranch()"
+    id="create-inst"
+    kendoButton
+    [look]="'outline'"
+  >
+    <span class="k-icon k-i-plus"></span>ფილიალის დამატება
+  </button>
+
+  <kendo-grid
+    class="grid-kendo"
+    [kendoGridBinding]="gridBranchData"
+    [pageable]="true"
+    [pageSize]="2"
+    [height]="175"
+    scrollable="none"
+  >
+    <kendo-grid-column title="მისამართი" field="address" [width]="80">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="მენეჯერი" field="manager_name" [width]="100">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="მოქმედებები" field="actions" [width]="70">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        <kendo-dropdownbutton
+          [data]="showOptions"
+          (itemClick)="onItemClick($event, dataItem)"
+        >
+          <span class="k-icon k-i-settings"></span>
+          ნახვა
+        </kendo-dropdownbutton>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+</section>

@@ -1,0 +1,89 @@
+<section class="section1">
+  <form [formGroup]="myForm" class="form">
+    <div class="form-group">
+      <label
+        >საიდენტიფიკაციო
+        <input
+          class="input-type"
+          type="text"
+          name="საიდენტიფიკაციო"
+          formControlName="identification"
+          kendoTextBox
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+        />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="label-space"
+        >დასახელება
+        <input
+          class="input-type"
+          kendoTextBox
+          formControlName="name"
+          type="text"
+          name="დასახელება"
+        />
+      </label>
+    </div>
+
+    <button
+      class="submit-button"
+      type="submit"
+      id="search"
+      kendoButton
+      [look]="'outline'"
+      (click)="onSubmit()"
+    >
+      <span class="k-icon k-i-search"></span> ძიება
+    </button>
+  </form>
+</section>
+
+<div class="div-line"></div>
+
+<section class="section2">
+  <button
+    class="create-button"
+    type="button"
+    id="create"
+    kendoButton
+    [look]="'outline'"
+  >
+    <span class="k-icon k-i-plus"></span
+    ><a [routerLink]="['create']">დაწესებულების შექმნა </a>
+  </button>
+
+  <header>
+    <h1>ძებნის შედეგები</h1>
+  </header>
+
+  <kendo-grid
+    class="grid-kendo"
+    [kendoGridBinding]="gridData"
+    [pageable]="true"
+    [pageSize]="5"
+    [height]="320"
+    scrollable="none"
+  >
+    <kendo-grid-column title="საიდენტიფიკაციო" field="pid" [width]="120">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="დასახელება" field="name" [width]="140">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="საკონტაქტო ნომერი" field="number" [width]="160">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="მოქმედებები" field="" [width]="60">
+      <ng-template kendoGridCellTemplate>
+        <kendo-dropdownlist
+          class="edit-box"
+          [data]="showEdit"
+          value="ნახვა"
+        >
+        </kendo-dropdownlist>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+</section>

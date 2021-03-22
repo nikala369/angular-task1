@@ -1,0 +1,56 @@
+<section class="create-branches">
+  <header>
+    <h1 class="create-heading">
+      <span>
+        დაწესებულება: {{ institutionName }} -
+        <span [hidden]="isShow">ფილიალის შექმნა</span>
+      </span>
+    </h1>
+  </header>
+
+  <form [formGroup]="branchForm" (ngSubmit)="createBranch()" novalidate>
+    <label
+      >მისამართი
+      <kendo-textbox
+        class="inst-input-type"
+        formControlName="address"
+        type="text"
+        name="addressCreate"
+        [showSuccessIcon]="value.length >= 3"
+        [showErrorIcon]="'initial'"
+        required
+      >
+      </kendo-textbox>
+    </label>
+
+    <label
+      >მენეჯერის სახელი*
+      <kendo-textbox
+        class="inst-input-type"
+        name="menegerName"
+        formControlName="name"
+        [showSuccessIcon]="value.length >= 3"
+        [showErrorIcon]="'initial'"
+        required
+      >
+      </kendo-textbox>
+    </label>
+
+    <div [hidden]="isShow">
+      <button
+        class="create-button"
+        [disabled]="branchForm.invalid"
+        type="submit"
+        id="create-inst"
+        kendoButton
+        [look]="'outline'"
+      >
+        <span class="k-icon k-i-plus"></span> შექმნა
+      </button>
+    </div>
+  </form>
+</section>
+
+<section [hidden]="textShow">
+  <h1 class="created-branch">წარმატებით შეიქმნა !</h1>
+</section>

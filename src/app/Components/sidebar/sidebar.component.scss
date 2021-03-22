@@ -1,0 +1,51 @@
+.sidebar {
+  width: 300px;
+  min-width: 250px;
+  height: 90vh;
+
+  box-shadow: 3px 4px 2px 1px grey;
+  border: 1.5px solid rgb(86, 85, 88);
+
+  margin: 20px 10px;
+
+  .lists {
+    margin-top: 25px;
+    margin-left: -20px;
+    list-style-type: none;
+
+    a {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      letter-spacing: 0.3px;
+
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        color: rgb(114, 114, 114);
+      }
+    }
+    .active {
+      color: rgb(114, 114, 114);
+    }
+
+    .list-flex {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  .sidebar-list {
+    margin-bottom: 20px;
+  }
+}
+
+.k-icon-32 {
+  font-size: 32px;
+}
+
+.inst-icon {
+  width: 32px;
+  padding-left: 0px;
+  padding-right: 6px;
+}
