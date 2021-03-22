@@ -1,3 +1,4 @@
+import { CreatedInstComponent } from './Components/Pages/institutions/created-inst/created-inst.component';
 import { InstEditComponent } from './Components/Pages/institutions/inst-edit/inst-edit.component';
 import { EditBranchComponent } from './Components/Pages/institutions/edit-branch/edit-branch.component';
 import { BranchesComponent } from './Components/Pages/institutions/branches/branches.component';
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'institutions/:id',
     component: CreateInstComponent,
+  },
+
+  {
+    path: 'institutions/:id/created',
+    component: CreatedInstComponent,
   },
 
   {
@@ -76,4 +82,5 @@ export const routingComponents = [
   LoginComponent,
   InstEditComponent,
   PageNotFoundComponent,
+  CreatedInstComponent,
 ];

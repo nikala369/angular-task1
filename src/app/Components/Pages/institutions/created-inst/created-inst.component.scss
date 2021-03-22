@@ -1,0 +1,67 @@
+.create-institution {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+
+  .create-heading {
+    font-size: 35px;
+    letter-spacing: 0.5px;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 80px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    .inst-input-type {
+      width: 200px;
+      margin-top: 8px;
+    }
+
+    .number-field {
+      width: 200px;
+      margin-top: 8px;
+    }
+
+    .create-button {
+      width: 90px;
+      height: 30px;
+
+      border: 2px solid rgb(99, 99, 99) !important;
+
+      outline: none;
+    }
+  }
+}
+
+.section2 {
+  margin-top: -60px;
+  margin-left: 40px;
+}
+
+.button-space {
+  margin-bottom: 25px;
+}
+
+.div-line {
+  width: 560px;
+  height: 2px;
+  background-color: black;
+}
+
+.grid-kendo {
+  width: 600px;
+}
+
+.edit-box {
+  width: 130px;
+}

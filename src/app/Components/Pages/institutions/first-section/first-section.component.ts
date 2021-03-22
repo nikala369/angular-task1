@@ -62,6 +62,10 @@ export class FirstSectionComponent implements OnInit {
       console.log(item, dataItem);
       this.dataService.branchSubject.next(dataItem);
       this.router.navigate(['/institutions', dataItem.id, 'edit']);
+    } else if (item === 'ნახვა') {
+      console.log(item, dataItem);
+      this.dataService.branchSubject.next(dataItem);
+      this.router.navigate(['/institutions', dataItem.id, 'created']);
     }
   }
 }

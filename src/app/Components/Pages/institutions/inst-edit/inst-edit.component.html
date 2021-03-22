@@ -22,7 +22,7 @@
         class="inst-input-type"
         name="institutionName"
         formControlName="name"
-        [showSuccessIcon]="value.length >= 3"
+        [showSuccessIcon]="myFormTemplate.value.name.length >= 3"
         [showErrorIcon]="'initial'"
         required
       >

@@ -1,0 +1,87 @@
+<section class="create-institution">
+  <header>
+    <h1 class="create-heading">
+      დაწესებულება: {{ myFormTemplate.value.name }}
+    </h1>
+  </header>
+
+  <form [formGroup]="myFormTemplate">
+    <label
+      >საიდენტიფიკაციო
+      <input
+        class="inst-input-type"
+        formControlName="identification"
+        type="text"
+        name="identificationCreate"
+        kendoTextBox
+        [disabled]="isDisabled"
+      />
+    </label>
+
+    <label
+      >დასახელება*
+      <kendo-textbox
+        class="inst-input-type"
+        name="institutionName"
+        formControlName="name"
+        [disabled]="isDisabled"
+      >
+      </kendo-textbox>
+    </label>
+    <label
+      >საკონტაქტო ნომერი*
+      <kendo-maskedtextbox
+        class="number-field"
+        name="mobile"
+        [mask]="mask"
+        formControlName="number"
+        [value]="valueNumber"
+        number="00000000"
+        [disabled]="isDisabled"
+      ></kendo-maskedtextbox>
+    </label>
+  </form>
+</section>
+
+<section class="section2">
+  <div class="div-line"></div>
+  <h2>ფილიალები</h2>
+
+  <button
+    class="create-button button-space"
+    type="submit"
+    (click)="createBranch()"
+    id="create-inst"
+    kendoButton
+    [look]="'outline'"
+  >
+    <span class="k-icon k-i-plus"></span>ფილიალის დამატება
+  </button>
+
+  <kendo-grid
+    class="grid-kendo"
+    [kendoGridBinding]="gridBranchData"
+    [pageable]="true"
+    [pageSize]="2"
+    [height]="175"
+    scrollable="none"
+  >
+    <kendo-grid-column title="მისამართი" field="address" [width]="80">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="მენეჯერი" field="manager_name" [width]="100">
+    </kendo-grid-column>
+
+    <kendo-grid-column title="მოქმედებები" field="actions" [width]="70">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+        <kendo-dropdownbutton
+          [data]="showOptions"
+          (itemClick)="onItemClick($event, dataItem)"
+        >
+          <span class="k-icon k-i-eye"></span>
+          ნახვა
+        </kendo-dropdownbutton>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+</section>

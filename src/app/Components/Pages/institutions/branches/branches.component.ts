@@ -3,7 +3,6 @@ import { EventService } from './../../../../Services/event.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -28,7 +27,6 @@ export class BranchesComponent implements OnInit {
     private route: ActivatedRoute,
     public eventService: EventService,
     public formBuilder: FormBuilder,
-    private router: Router,
     private dataService: DataService
   ) {
     this.branchForm = new FormGroup({
